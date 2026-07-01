@@ -8,18 +8,14 @@ GPU miner for **FusionLayer (FXL)** — FusionHash (cn/gpu) algorithm.
 
 ## Downloads
 
-Each release ships builds for both GPU vendors and both platforms:
+Each release ships builds for both platforms:
 
-| Platform | OpenCL (AMD + NVIDIA) | CUDA (NVIDIA only) |
-|---|---|---|
-| **Windows x64** | `fear-miner.exe` | `fear-miner-cuda.exe` + `fusionhash_cuda.dll` + `cudart64_12.dll` |
-| **Linux / HiveOS** | `fear-miner` | `fear-miner-cuda` |
+| Platform | Binary |
+|---|---|
+| **Windows x64** | `fear-miner.exe` |
+| **Linux / HiveOS** | `fear-miner` |
 
-- **AMD GPUs:** use the OpenCL build (`fear-miner` / `fear-miner.exe`).
-- **NVIDIA GPUs:** prefer the **CUDA** build — it is faster and more accurate on
-  share correctness. The OpenCL build also runs on NVIDIA as a fallback.
-- The CUDA build requires its DLLs (`fusionhash_cuda.dll`, `cudart64_12.dll`) to
-  sit in the **same folder** as the executable.
+Runs on **AMD and NVIDIA** GPUs via OpenCL.
 
 ## Quick start
 
@@ -27,7 +23,6 @@ List detected GPUs:
 
 ```bat
 fear-miner.exe -info -all
-fear-miner-cuda.exe -info
 ```
 
 Local performance test (no pool):
@@ -39,8 +34,7 @@ fear-miner.exe -mock -all
 Mine to a pool:
 
 ```bat
-fear-miner.exe      -pool=wss://HOST:PORT -user=WALLET.WORKER -pass=x
-fear-miner-cuda.exe -pool=wss://HOST:PORT -user=WALLET.WORKER -pass=x
+fear-miner.exe -pool=wss://HOST:PORT -user=WALLET.WORKER -pass=x
 ```
 
 ## Common flags
@@ -63,7 +57,7 @@ fear-miner-cuda.exe -pool=wss://HOST:PORT -user=WALLET.WORKER -pass=x
 Every release includes a `SHA256SUMS.txt`. Check your download before running:
 
 ```bat
-certutil -hashfile fear-miner-cuda.exe SHA256
+certutil -hashfile fear-miner.exe SHA256
 ```
 
 ```bash
